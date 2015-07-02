@@ -14,4 +14,69 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
     #import <CoreData/CoreData.h>
+
+    #import"AppDelegate.h"//AppDelegate
+    //配置
+    #import "AFNetwork.h"
+    #import "Methods.h"//工具
+    #import "MobilePosition.h"// 定位
+    #import "SettingsManager.h"//本地配置
+    //UI
+    #import "AMBlurView.h"//毛玻璃
+    #import "NZAlertView.h"//弹出框
+    #import "CNPGridMenu.h"//黑色背景菜单
+    #import "ProgressHUD.h"//加载中
+//****************************系统颜色配置****************************
+//系统导航
+#define appDelegate ((AppDelegate *)[UIApplication sharedApplication].delegate)
+//系统背景颜色
+#define kSystemBgColor [UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:1]
+//系统背景颜色
+#define kSystemAccessoryViewColor RGB(64,224,208,0.1)
+//选择系统颜色
+#define kSystemSelectBackgroundColor RGB(255,244,203,0.8)
+//颜色
+#define RGB(r,g,b,a) [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:a/1.0f]
+//颜色
+#define RGB_X(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+
+
+
+//RGB_X(0x067AB5)
+
+//系统字体
+#define SystemFont(S) [UIFont fontWithName:@"Helvetica" size:S]
+//快速照片
+#define SystemQuickImage(image)  [UIImage imageNamed:image]
+//快速原图片
+#define SystemOriginalImage(image) [[UIImage imageNamed:image]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
+//***************************版本配置***************************
+//判断版本
+#define IsIOS8               ([[[[UIDevice currentDevice] systemVersion] substringToIndex:1] intValue]==8)
+#define IsIOS7               ([[[[UIDevice currentDevice] systemVersion] substringToIndex:1] intValue]==7)
+#define IsIOS6               ([[[[UIDevice currentDevice] systemVersion] substringToIndex:1] intValue]==6)
+
+#define IsIPhone4_4s  (ScreenWidth==320.000000&&ScreenHeight==480.000000)
+#define IsIPhone5s  (ScreenWidth==320.000000&&ScreenHeight==568.000000)
+#define IsIPhone6  (ScreenWidth==375.000000&&ScreenHeight==667.000000)
+#define IsIPhone6Plus  (ScreenWidth==414.000000&&ScreenHeight==736.000000)
+//导航坐标设置
+//从状态栏下开始算
+#define JJ_RectMake(x,y,w,h)      CGRectMake((x), (y+((IsIOS7||IsIOS8)?64:0)), (w), (h))
+//屏幕长度
+#define ScreenHeight    [[UIScreen mainScreen] bounds].size.height
+//屏幕宽度
+#define ScreenWidth     [[UIScreen mainScreen] bounds].size.width
+
+//************************输出日志************************
+#ifdef DEBUG
+#define CLog(format, ...) NSLog(format, ## __VA_ARGS__)
+#else
+#define CLog(format, ...)
+#endif
+
+
+#define UmengAppkey @"52118156240bc859ee01db2f"
+#define PageSize @"15"
+
 #endif
